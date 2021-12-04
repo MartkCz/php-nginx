@@ -2,25 +2,29 @@
 
 ## Production
 ```dockerfile
-# PHP
 USER root
 
-RUN cp /examples/php/99_production.ini /etc/php8/conf.d/ && \
-    rm /etc/php8/conf.d/98_development.ini
+# PHP
+RUN cp /production/php/99_settings.ini /etc/php8/conf.d/
     
-## PHP-fpm    
-RUN cp /examples/php-fpm/www-production.ini /etc/php8/fpm-conf.d/www.ini
+# PHP-fpm    
+RUN cp /production/php-fpm/www.conf /etc/php8/php-fpm.d/
 
 # Nginx
-RUN cp /etc/nginx/nginx-production.conf /etc/nginx/nginx.conf
+RUN cp /production/nginx/nginx.conf /etc/nginx/
 
-RUN cp /etc/nginx/includes/_nginx-http-brotli.conf /etc/nginx/includes/nginx-http-brotli.conf # enables brotli
-RUN cp /etc/nginx/includes/_nginx-module-brotli.conf /etc/nginx/includes/nginx-module-brotli.conf # enables brotli
+# Enables brotli
+RUN cp /etc/nginx/includes/_nginx-http-brotli.conf /etc/nginx/includes/nginx-http-brotli.conf
+RUN cp /etc/nginx/includes/_nginx-module-brotli.conf /etc/nginx/includes/nginx-module-brotli.conf
 
-RUN cp /etc/nginx/includes/_nginx-http-gzip.conf /etc/nginx/includes/nginx-http-gzip.conf # enables gzip
-RUN cp /etc/nginx/includes/_nginx-server-cache.conf /etc/nginx/includes/nginx-server-cache.conf # enables asset caching
-RUN cp /etc/nginx/includes/_nginx-server-https.conf /etc/nginx/includes/nginx-server-https.conf # enables http -> https
-RUN cp /etc/nginx/includes/_nginx-server-non-www.conf /etc/nginx/includes/nginx-server-non-www.conf # enables www ->
+# Enables gzip
+RUN cp /etc/nginx/includes/_nginx-http-gzip.conf /etc/nginx/includes/nginx-http-gzip.conf
+# Enables asset caching
+RUN cp /etc/nginx/includes/_nginx-server-cache.conf /etc/nginx/includes/nginx-server-cache.conf
+# Enables http -> https
+RUN cp /etc/nginx/includes/_nginx-server-https.conf /etc/nginx/includes/nginx-server-https.conf
+# Enables www -> 
+RUN cp /etc/nginx/includes/_nginx-server-non-www.conf /etc/nginx/includes/nginx-server-non-www.conf
 
 USER www-data
 ```
@@ -30,8 +34,8 @@ USER www-data
 ```dockerfile
 USER root
 
-RUN rm /usr/lib/php8/modules/swoole.so && \
-    rm /etc/php8/conf.d/00_swoole.ini
+# Remove swoole
+RUN rm /usr/lib/php8/modules/swoole.so && rm /etc/php8/conf.d/00_swoole.ini
     
 USER www-data
 ```

@@ -7,8 +7,12 @@ RUN apk add --no-cache \
     nginx \
     nginx-mod-http-brotli
 
-COPY conf/nginx /etc/nginx/
+COPY conf/nginx/nginx.conf /etc/nginx/
+COPY conf/nginx/includes/ /etc/nginx/includes/
 COPY conf/supervisor/supervisord.conf /etc/supervisor/conf.d/
+
+## production files
+COPY conf/nginx/nginx-production.conf /production/nginx/nginx.conf
 
 RUN chown -R www-data.www-data /var/lib/nginx
 RUN chown -R www-data.www-data /var/log/nginx
