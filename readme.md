@@ -12,6 +12,8 @@ RUN cp /examples/php/99_production.ini /etc/php8/conf.d/ && \
 RUN cp /examples/php-fpm/www-production.ini /etc/php8/fpm-conf.d/www.ini
 
 # Nginx
+RUN cp /etc/nginx/nginx-production.conf /etc/nginx/nginx.conf
+
 RUN cp /etc/nginx/includes/_nginx-http-brotli.conf /etc/nginx/includes/nginx-http-brotli.conf # enables brotli
 RUN cp /etc/nginx/includes/_nginx-module-brotli.conf /etc/nginx/includes/nginx-module-brotli.conf # enables brotli
 

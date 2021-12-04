@@ -1,4 +1,4 @@
-FROM martkcz/php-alpine:8.0.13
+FROM martkcz/php-alpine:8.0.13-r1
 
 USER root
 
