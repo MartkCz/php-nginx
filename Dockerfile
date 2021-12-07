@@ -17,6 +17,12 @@ COPY conf/nginx/nginx-production.conf /production/nginx/nginx.conf
 RUN chown -R www-data.www-data /var/lib/nginx
 RUN chown -R www-data.www-data /var/log/nginx
 
+RUN chmod -R 777 /var/lib/nginx
+RUN chmod -R 777 /var/log
+RUN chmod -R 777 /app
+RUN chmod -R 777 /run
+RUN chmod -R 777 /home/www-data
+
 USER www-data
 
 EXPOSE 8080
