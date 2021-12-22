@@ -1,4 +1,6 @@
-# Nginx-1.20.2 PHP-8.0.13 alpine
+# Nginx-1.20.2 PHP-8.0.14 alpine
+
+https://hub.docker.com/repository/docker/martkcz/php-nginx-alpine
 
 ## Production
 ```dockerfile
