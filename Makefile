@@ -1,5 +1,5 @@
 REPO:=martkcz/php-nginx-alpine
-VERSION:=8.0.14-r1
+VERSION:=8.1.3-r4
 
 all: build release
 
